@@ -80,3 +80,65 @@ function myFunction {
 }
 myFunction();
 console.log(globalVar);
+```
+
+## Return a Value from a Function with Return
+
+- We can pass values into a function with arguments. You can use a return statement to send a value back out of a function.
+
+```js
+
+function plusThree(num) {
+  return num + 3;
+}
+var answer = plusThree(5); // answer has the value 8.
+
+// plusThree takes an argument for num and returns a value equal to num + 3.
+```
+
+## Understanding Undefined Value returned from a Function
+
+- A function can include the return statement but it does not have to. In the case that the function doesn't have a return statement, when you call it, the function processes the inner code but the returned value is undefined.
+
+```js
+var sum = 0;
+function addSum(num) {
+  sum = sum + num;
+}
+addSum(3);
+// addSum is a function without a return statement. The function will change the global sum variable but the returned value of the function is undefined.
+
+```
+## Assignment with a return value
+
+- We can take a retun value of a function and assign it to a variable. 
+
+```js 
+var changed = 0 
+function plusThree(num) {
+  return num + 3;
+}
+var answer = plusThree(5);
+
+changed = plusThree(10);
+```
+
+- Everything on the right of the equal sign is resolved before value is assigned. 
+
+## Queue a complex data structure where items are kept in order. 
+```js 
+// We are taking the nextInLine function and assigning it to an array that call this function.
+function nextInLine(arr, item) { // takes in arguments or array and item
+  arr.push(item); // use .push method to add a number to the end of an arr
+  arr.shift(); // Takes off the first number in the array
+  return item;
+}
+
+// Setup
+var testArr = [1,2,3,4,5]; 
+
+// Display code
+// Stringify turns an array into a string.
+console.log("Before: " + JSON.stringify(testArr)); // shows the array before the function is run
+console.log(nextInLine(testArr, 6)); // array is called with the item value being 6. This is put into arr.push. 
+console.log("After: " + JSON.stringify(testArr)); // shows the array after the function has been run. 
