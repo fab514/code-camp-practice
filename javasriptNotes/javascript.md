@@ -541,6 +541,425 @@ var ourDog = {
 
 ourDog.name = "Happy Camper"; // instead of getting Camper, we'll get his new name, Happy Camper.
 // or ourDog["name"] = "Happy Camper"; 
+```
+## Adding and deleting properties to a JS object
+- You can add new properties to existing objects the same way you can modify them. 
+- Here's how we would add a bark property to ourDog:
+ourDog.bark = "bow-wow"; or ourDog["bark"] = "bow-wow";
+- You can also delete properties off of an object. 
+delete ourDog.bark
+```js
+// adding a new property
+var ourDog = {
+  "name": "Camper",
+  "legs": 4,
+  "tails": 1,
+  "friends": ["everything!"]
+};
+
+ourDog.bark = "bow-wow";
+// deleting a property
+var ourDog = {
+  "name": "Camper",
+  "legs": 4,
+  "tails": 1,
+  "friends": ["everything!"],
+  "bark": "bow-wow"
+};
+
+delete ourDog.bark; // bark property will be removed from the object
+```
+## Using objects for lookups
+- You can use anobject to lookupvalues rather than a switch statement or if/else chain. This is most useful when you know that your input data is limited to a certain range.
+```js
+var alpha = {
+  1:"Z",
+  2:"Y",
+  3:"X",
+  4:"W",
+  ...
+  24:"C",
+  25:"B",
+  26:"A"
+};
+alpha[2]; // will return as "Y"
+alpha[24]; // will return as "C"
+
+var value = 2; // This will also show as "Y"
+alpha[value];
+```
+## Testing objects for properties
+- You can check if the property of a given object exists or not. 
+- We can use the <strong>.hasOwnProperty(propname)</strong> method of objects to determine if the object has the given property name. 
+- .hasOwnProperty returns a boolean(t/f) if the property is found or not. 
+```js
+var myObj = {
+  top: "hat",
+  bottom: "pants"
+};
+myObj.hasOwnProperty("top"); // true
+myObj.hasOwnProperty("middle"); // false
+```
+
+## Manipulating complex objects
+- A javascript object is a way to handle flexible data. You can store data in a flexible <strong>Data Structure</strong>.
+- They can contain any combination of strings, numbers, booleans, arrays, functions and objects. 
+- myMusic function has 2 objects inside which carries metadata about the object. 
+```js
+var myMusic = [
+  {
+    "artist": "Billy Joel",
+    "title": "Piano Man",
+    "release_year": 1973,
+    "formats": [
+      "CD",
+      "8T",
+      "LP"
+    ],
+    "gold": true
+  }, //make sure to put a comma between every object. 
+  {
+  "artist": "Daft Punk",
+  "title": "Homework",
+  "release_year": 1997,
+  "formats": [ 
+    "CD",
+    "Cassette",
+    "LP"
+  ],
+  "gold": true
+}
+];
+```
+## Accessing Nested Objects
+- subproperties of objects can be accessed by chaing together the dot or bracket notation. 
+- If there is a space between words such as "top drawer" would need the bracket notation.
+```js
+// Here is a nested object:
+
+var ourStorage = {
+  "desk": {
+    "drawer": "stapler"
+  },
+  "cabinet": {
+    "top drawer": { 
+      "folder1": "a file",
+      "folder2": "secrets"
+    },
+    "bottom drawer": "soda"
+  }
+};
+ourStorage.cabinet["top drawer"].folder2; // will show the string "strings"
+ourStorage.desk.drawer; // will show the string "stapler"
+```
+## Accessing nested arrays 
+- Objects can contain nested objects or nested arrays. You can access nested objects using bracket notation and can be chained to access nested arrays. 
+```js
+var myPlants = [
+  {
+    type: "flowers",
+    list: [
+      "rose",
+      "tulip",
+      "dandelion"
+    ]
+  },
+  {
+    type: "trees",
+    list: [
+      "fir",
+      "pine",
+      "birch"
+    ]
+  }
+];
+
+var secondTree = myPlants[1].list[1]; // This will show "pine"
+
+```
+## While Loops
+- You can run the same code multiple times by using a loop. 
+- A while loop runs while a specified condition is true and stops once that condition is no longer true.
+
+```js
+var ourArray = [];
+var i = 0;
+while(i < 5) {
+  ourArray.push(i);
+  i++;
+}
+```
+## For Loops
+- For loops is the most common js loop because it runs a specific amount of times. 
+- for (a; b; c) a is the initializing statement, b is the condition statement, c is the final expression. 
+- Initializing statement is only run once when the loop starts. Used to setup and define the loop variable.
+- Condition statement is evaluated at the beginning of every loop iteration and will continue as long as it shows true. If the statement is false at the beginning of the iteration the loop will stop executing. If condition starts false then the loop will not execute.
+- The final expression is executed at the end of each loop iteration, prior to the next condition check and is usually used to increment or decrement your loop counter.
+
+- In the following example we initialize with i = 0 and iterate while our condition i < 5 is true. We'll increment i by 1 in each loop iteration with i++ as our final expression.
+
+var ourArray = [];
+for (var i = 0; i < 5; i++) { // (a; b; c)
+  ourArray.push(i);
+}
+
+ourArray will now have the value [0,1,2,3,4].
+
+## Iterate Odd Numbers With a For Loop
+
+- For loops don't have to iterate one at a time. By changing our final-expression, we can count by even numbers.
+
+- We'll start at i = 0 and loop while i < 10. We'll increment i by 2 each loop with i += 2.
+
+var ourArray = [];
+for (var i = 0; i < 10; i += 2) {
+  ourArray.push(i);
+}
+
+ourArray will now contain [0,2,4,6,8]. Let's change our initialization so we can count by odd numbers.
+
+## Count Backwards With a For Loop
+
+A for loop can also count backwards, so long as we can define the right conditions.
+
+In order to decrement by two each iteration, we'll need to change our initialization, condition, and final expression.
+
+We'll start at i = 10 and loop while i > 0. We'll decrement i by 2 each loop with i -= 2.
+
+var ourArray = [];
+for (var i = 10; i > 0; i -= 2) {
+  ourArray.push(i);
+}
+
+ourArray will now contain [10,8,6,4,2]. Let's change our initialization and final expression so we can count backwards by twos to create an array of descending odd numbers.
+
+## Iterate Through an Array with a For Loop
+
+A common task in JavaScript is to iterate through the contents of an array. One way to do that is with a for loop. This code will output each element of the array arr to the console:
+
+var arr = [10, 9, 8, 7, 6];
+for (var i = 0; i < arr.length; i++) {
+   console.log(arr[i]);
+}
+
+Remember that arrays have zero-based indexing, which means the last index of the array is length - 1. Our condition for this loop is i < arr.length, which stops the loop when i is equal to length. In this case the last iteration is i === 4 i.e. when i becomes equal to arr.length - 1 and outputs 6 to the console. Then i increases to 5, and the loop terminates because i < arr.length is false.
+// Setup
+var myArr = [ 2, 3, 4, 5, 6];
+
+var total = 0
+for (var i = 0; i < myArr.length; i++) {
+  total += myArr[i];
+}
+console.log(total) // should add up to 20
+
+## Nesting for Loops
+- If you have a multi-dimensional array you can use the same logic as the prior waypoint to loop through both the array and any sub-arrays
+- This output each sub-element in arr one at a time. 
+
+
+```js
+function multiplyAll(arr) {
+  var product = 1;
+  for (var i=0; i < arr.length; i++) {
+    for (var j=0; j < arr[i].length; j++) {
+      product *= arr[i][j]; // multiply the nested arrays within the outer array.
+    }
+  }
+  return product;
+}
+
+multiplyAll([[1,2],[3,4],[5,6,7]]);// In the inner loop we are checking .length of arr[i], since arr[i] is itself an array. 
+```
+## do...while loop
+- It is called the do while loop because it will first do one pass of the code inside of the loop no matter what, then continue to run the loop while the specified condition is true.
+
+```js 
+// Setup
+var myArray = [];
+var i = 10;
+
+ do {
+  myArray.push(i); // will already run this whether true or false
+  i++;
+} while (i < 5) // this is a false statement so the loop will stop running. 
+// console will show 11[10]
+```
+## Replace Loops using Recursion
+- Recursion is the concept that a a function can be expressed in terms of itself. 
+- Recursion breaks a complex problem into small parts and loop over those parts
+- Two main parts. A terminating condition (base case): causing the function not to be called again. Recursive Case: part that calls itself.
+```js
+  function multiply(arr, n) {
+    if (n <= 0) { // terminating condition 
+      return 1;
+    } else {
+      return multiply(arr, n - 1) * arr[n - 1]; // Recursive case (calls itself)
+    }
+  }
+
+  ```
+  ## Generate random Fractions with JS
+  - Random numbers are useful for creating random behavior. 
+  - Math.random() function generates a random decimal number between 0(inclusive) and not quite 1(exclusive). Math.random can return 0 but never return 1
+  - Function calls are resolved before the return executes so we can return the Math.random() function.
+```js
+  function randomFraction {
+      return Math.random();
+  }
+  ```
+  ## Generate a random whole number
+  - Use Math.random() to generate a random decimal.
+  - Multiply that decimal by 20 (or +1 over your max number)
+  - Use Math.floor to round the number down to the nearest whole number. 
+  - Remember Math.random never reaches to 1 so we can not reach 20 so this will generate a random number between 0 and 19
+  ```js
+  Math.floor(Math.random() * 20);
+  ```
+  ## Generate Random whole numbers within a range
+  - Instead of generating a random number between zero and a given number the random number can fall in a range. 
+  - We use min and max
+  ```js
+  function randomRange(myMin, myMax) {
+    return Math.floor(Math.random() * (myMax - myMin + 1)) + myMin;
+  }
+  ```
+  ### Code Explanation
+
+    - Math.random() generates our random number between 0 and ≈ 0.9.
+    - Before multiplying it, it resolves the part between parenthesis (myMax - myMin + 1) because of the grouping operator ( ).
+    - The result of that multiplication is followed by adding myMin and then “rounded” to the largest integer less than or equal to it (eg: 9.9 would result in 9)
+
+- If the values were myMin = 1, myMax= 10, one result could be the following:
+
+    Math.random() = 0.8244326990411024
+    (myMax - myMin + 1) = 10 - 1 + 1 -> 10
+    a * b = 8.244326990411024
+    c + myMin = 9.244326990411024
+    Math.floor(9.244326990411024) = 9
+
+    ## Using the parseInt Function
+    - the parseInt("007");
+    - The above function converts the string 007 to the interger 7. 
+    - If the first character in the string can't be converted into a number, then it returns NaN (Not a Number). 
+
+    ```js
+    // Use parseInt() in the convertToInteger function so it converts the input string str into an integer, and returns it.
+    function convertToInteger(str) {
+      return parseInt(str)
+    }
+    
+    convertToInteger("56");
+
+  // The above function converts the string 007 to the integer 7. If the first character in the string can't be converted into a number, then it returns NaN.
+    var a = parseInt("007");
+
+  ```
+  - The parseInt function can be used with a radix. The radix is the base of the number in the string
+  - common radix is 10 0-9, 2 0-1 binary, octal 0-7, hexidecimal 0-F
+
+  ```js
+  function convertToInteger(str) {
+    return parseInt(str, 2)
+  }
+  convertToInteger("10011);
+  ```
+## Use cpnditional (ternary) operator
+- The conditional operator(ternary operater), can be used as a one line if-else expression
+- The syntax is a ? b : c where a is the condition, b is the code to run when condition is true, and c is the code to run if the condition returns false.
+```js
+function findGreater(a, b) {
+  if(a > b) {
+    return "a is greater";
+  }
+  else {
+    return "b is greater";
+  }
+}
+// can be re-written using a conditional operator
+function findGreater(a, b) {
+  return a > b ? "a is greater" : "b is greater";
+}
+```
+## Multiple Conditional (ternary) operators
+- You can chain conditional operators together to check for multiple conditions. 
+```js
+function findGreaterOrEqual(a, b) {
+  if (a === b) {
+    return "a and b are equal";
+  }
+  else if (a > b) {
+    return "a is greater";
+  }
+  else {
+    return "b is greater";
+  }
+}
+// Rewrite the above if-else statement to a ternary operator
+function findGreaterOrEqual(a, b) {
+  return (a === b) ? "a and b are equal" 
+    : (a > b) ? "a is greater" 
+    : "b is greater";
+}
+```
+## Recursion to create countdown
+
+- Complex function that returns an array consecutive intergers from 1 - passed number
+- There will be a base case. The base case tells the recursive function when it no longer needs to be called (loop)
+- The return value is already know.
+- There will be another recursive function which executes the original function with different arguments
+- ex recursive function that returns an array from [1-n]
+
+```js
+function countup(n) {
+  if (n < 1) {
+    return [];
+  } else {
+    const countArray = countup(n - 1);
+    countArray.push(n);
+    return countArray;
+  }
+}
+console.log(countup(5));
+// console value will show [1, 2, 3, 4, 5]
+// we use n - 1 because countArray.push runs last after the recursive call has returned. When n is pushed into the array it will return [1, 2...]
+
+// .unshift will add one or more elements to the beginning of the array and returns a new length
+function countdown(n){
+  if (n < 1) {
+    return [];
+  } else {
+    const arr = countdown(n - 1);
+    arr.unshift(n);
+    return arr;
+  }
+}
+
+// need help!
+function rangeOfNumbers(startNum, endNum) {
+  if (endNum - startNum === 0) {
+    return [startNum];
+  } else {
+    var numbers = rangeOfNumbers(startNum, endNum - 1);
+    numbers.push(endNum);
+    return numbers;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
