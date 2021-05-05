@@ -861,7 +861,7 @@ var i = 10;
   function convertToInteger(str) {
     return parseInt(str, 2)
   }
-  convertToInteger("10011);
+  convertToInteger("10011"); 
   ```
 ## Use cpnditional (ternary) operator
 - The conditional operator(ternary operater), can be used as a one line if-else expression
